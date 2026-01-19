@@ -1,6 +1,6 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
                     <p class="t cent botli">動畫圖片管理</p>
-                    <form method="post" action="./api/edit_mvim.php">
+                    <form method="post" action="./api/edit.php?table=<?=$do;?>">
                         <table width="100%">
                             <tbody>
                                 <tr class="yel">
@@ -27,7 +27,7 @@
                                         ></td>
                                     <td>
                                         <input type="button" value="更換動畫" 
-                                        onclick="op('#cover','#cvr','./modal/update_<?=$do;?>.php?id=<?=$row['id'];?>')">
+                                        onclick="op('#cover','#cvr','./modal/update.php?table=<?=$do;?>&id=<?=$row['id'];?>')">
                                     </td>
                                 </tr>
                                 <?php
@@ -39,7 +39,7 @@
                             <tbody>
                                 <tr>
                                     <td width="200px"><input type="button"
-                                            onclick="op('#cover','#cvr','./modal/<?=$do;?>.php')"
+                                            onclick="op('#cover','#cvr','./modal/<?=$do;?>.php?table=<?=$do;?>')"
                                             value="新增動畫圖片"></td>
                                     <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置">
                                     </td>
