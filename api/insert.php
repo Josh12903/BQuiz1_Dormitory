@@ -2,8 +2,8 @@
 
 include_once "db.php";
 
-$table=$_GET['do'];
-echo $table;
+$table=$_GET['table'];
+// echo $table;
 $DB = ${ucfirst($table)};
 
 if(!empty($_FILES['img']['tmp_name'])){

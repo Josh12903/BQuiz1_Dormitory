@@ -14,7 +14,7 @@
                                     </td>
                                 </tr>
                                 <?php
-                                $rows=$Menu->all();
+                                $rows=$Menu->all(['main_id'=>0]);
                                 foreach($rows as $row):
                                 ?>
                                 <tr>
@@ -33,7 +33,7 @@
                                     </td>
                                     <td>
                                         <input type="button" value="編輯次選單"
-                                        onclick="op('#cover','#cvr','./modal/submenu.php?table=<?=$do;?>&id=<?=$row['id'];?>')">
+                                        onclick="op('#cover','#cvr','./modal/submenu.php?id=<?=$row['id'];?>')">
                                     </td>
                                 </tr>
                                 <?php
