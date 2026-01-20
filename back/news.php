@@ -1,5 +1,5 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-                    <p class="t cent botli">動態文字廣告管理</p>
+                    <p class="t cent botli">最新消息管理</p>
                     <form method="post" action="./api/edit.php?table=<?=$do;?>">
                         <table width="100%">
                             <tbody>
@@ -10,7 +10,12 @@
                                     <td></td>
                                 </tr>
                                 <?php
-                                $rows=$News->all();
+                                    $total=$News->count();
+                                    $div=5;
+                                    $pages=ceil($total/$div);
+                                    $now=$_GET['p']??1;
+                                    $start=($now-1)*$div;
+                                    $rows=$News->all(" limit $start,$div"); 
                                 foreach($rows as $row):
                                 ?>
                                 <tr>
@@ -32,6 +37,24 @@
                                 ?>
                             </tbody>
                         </table>
+                        <div class="cent">
+                        <?php
+                                if($now>1){
+                                    $prev=$now-1;
+                                    echo "<a href='?do=$do&p=$prev'> < </a>";
+                                    }
+                                    
+                                for($i=1;$i<=$pages;$i++){
+                                    $size=($i==$now)?"24px":"16px";
+                                    echo "<a href='?do=$do&p=$i' style='font-size:$size;'> $i </a>";
+                                }
+                                
+                                if($now<$pages){
+                                    $next=$now+1;
+                                    echo "<a href='?do=$do&p=$next'> > </a>";
+                                }
+                            ?>
+                        </div>
                         <table style="margin-top:40px; width:70%;">
                             <tbody>
                                 <tr>

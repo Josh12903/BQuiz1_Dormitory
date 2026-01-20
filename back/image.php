@@ -4,7 +4,7 @@
                         <table width="100%">
                             <tbody>
                                 <tr class="yel">
-                                    <td width="45%">校園映像資料</td>
+                                    <td width="45%">校園映像圖片</td>
                                     
                                     <td width="7%">顯示</td>
                                     <td width="7%">刪除</td>
