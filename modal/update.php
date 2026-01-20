@@ -12,19 +12,18 @@ switch($_GET['table']){
         $header="更換動畫";
         $title="動畫圖片";
         break;
-    
-
 }
+
 ?>
 <div class="cent"><?=$header;?></div>
-    <hr>
-<form action="./api/update.php" method="post" enctype="multipart/form-data">
+<hr>
+<form action="./api/update.php?table=<?=$_GET['table'];?>" method="post" enctype="multipart/form-data">
     <table style="width:80%;margin:auto">
         <tr>
             <td><?=$title;?></td>
             <td><input type="file" name="img" id=""></td>
         </tr>
-        
+
         <tr>
             <input type="hidden" name="id" value="<?=$_GET['id'];?>">
             <td><input type="submit" value="更新"></td>

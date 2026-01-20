@@ -55,3 +55,5 @@ foreach($ids as $id){
 }
 
 to("../back.php?do=$table");
+
+?>

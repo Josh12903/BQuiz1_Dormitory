@@ -10,4 +10,6 @@ if(!empty($_FILES['img']['tmp_name'])){
 
 $db->save($_POST);
 
-to("./back.php?do=$table");
+to("../back.php?do=$table");
+
+?>

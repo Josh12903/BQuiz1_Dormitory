@@ -14,7 +14,7 @@ Class DB{
         $sql="select * from `$this->table` ";
 
             if(isset($arg[0])){
-                if(is_array(arg[0])){
+                if(is_array($arg[0])){
 
                     $tmp=$this->arrayToSql($arg[0]);
                     $sql .= " where " . implode(" && ",$tmp);
