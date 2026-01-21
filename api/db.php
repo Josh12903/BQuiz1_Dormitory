@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 Class DB{
     private $dsn="mysql:host=localhost;dbname=db260111;charset=utf8";
     private $table;
