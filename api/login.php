@@ -11,5 +11,5 @@ if($chk){
 
 <script>
     alert("帳號或密碼錯誤，請重新登入");
-    location.href="../login.php";
+    location.href="../index.php?do=login";
 </script>
