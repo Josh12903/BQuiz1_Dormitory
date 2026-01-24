@@ -16,13 +16,13 @@
                                 <tr>
                                     
                                     <td>
-                                        <input type="text" value="<?=$row['text'];?>" style="width:85%">
+                                        <input type="text" name="text[<?=$row['id'];?>]" value="<?=$row['text'];?>" style="width:85%">
                                     </td>
                                     <td>
                                         <input type="checkbox" name="sh[]" value="<?=$row['id'];?>"  <?=($row['sh']==1)?"checked":"";?>>
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="" value="<?=$row['id'];?>">
+                                        <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                                     </td>
                                     
                                 </tr>
@@ -35,7 +35,7 @@
                             <tbody>
                                 <tr>
                                     <td width="200px"><input type="button"
-                                            onclick="op('#cover','#cvr','./modal/<?=$do;?>.php')"
+                                            onclick="op('#cover','#cvr','./modal/<?=$do;?>.php?table=<?=$do;?>')"
                                             value="新增動態文字廣告"></td>
                                     <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置">
                                     </td>

@@ -1,9 +1,9 @@
 ﻿<?php include_once "./api/db.php";
 
-if(!isset($_SESSION['admin'])){
-    to("login.php");
-    exit();
-}
+// if(!isset($_SESSION['admin'])){
+//     to("login.php");
+//     exit();
+// }
 
 ?>
 <!DOCTYPE html
