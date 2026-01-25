@@ -12,10 +12,10 @@
     <script src="./js/jquery-1.9.1.min.js"></script>
     <script src="./js/js.js"></script>
     <style>
-        .btn {
-            text-align: center;
-            margin:5px auto;
-        }
+    .btn {
+        text-align: center;
+        margin: 5px auto;
+    }
     </style>
 </head>
 
@@ -40,10 +40,34 @@
                 <div id="menuput" class="dbor">
                     <!--主選單放此-->
                     <span class="t botli">主選單區</span>
+                    <?php
+                        $mains = $Menu->all(['main_id' => 0, 'sh' => 1]);
+                        foreach ($mains as $main) {
+                            echo "<div class='mainmu'>";
+                            // --- 主選單連結 ---
+                            echo "<a href='{$main['href']}'>{$main['text']}</a>";
+                        
+                            // 檢查是否有子選單
+                            if ($Menu->count(['main_id' => $main['id']]) > 0) {
+                                $subs = $Menu->all(['main_id' => $main['id']]);
+                                
+                                // --- 子選單容器 (mw) ---
+                                echo "<div class='mw'>";
+                                foreach ($subs as $sub) {
+                                    echo "<div class='mainmu2'>";
+                                    // 修正 href 的引號，並確保 a 標籤在 div 內部
+                                    echo "<a href='{$sub['href']}'>{$sub['text']}</a>";
+                                    echo "</div>"; // 關閉 mainmu2
+                                }
+                                echo "</div>"; // 關閉 mw
+                            }
+                            echo "</div>"; // 關閉 mainmu
+                        }
+                        ?>
                 </div>
                 <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     <span class="t">進站總人數 :
-                    <?php
+                        <?php
                         $total=$Total->find(1);
                         echo $total['total']; 
                     ?>
@@ -80,17 +104,17 @@
             <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 <!--右邊-->
                 <?php if(isset($_SESSION['admin'])):?>
-                    <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
-                        onclick="lo(&#39;back.php&#39;)">返回管理</button>
+                <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
+                    onclick="lo(&#39;back.php&#39;)">返回管理</button>
                 <?php else:?>
-                        <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
-                        onclick="lo(&#39;?do=login&#39;)">管理登入</button>
+                <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
+                    onclick="lo(&#39;?do=login&#39;)">管理登入</button>
                 <?php endif;?>
                 <div style="width:89%; height:480px;" class="dbor">
                     <span class="t botli">校園映象區</span>
-                        <div class="btn" onclick="pp(1)" style="cursor: pointer"><img src="./icon/01E01.jpg" alt=""></div>
-                        <div>
-                            <?php
+                    <div class="btn" onclick="pp(1)" style="cursor: pointer"><img src="./icon/01E01.jpg" alt=""></div>
+                    <div>
+                        <?php
                                 $imgs=$Image->all(['sh'=>1]);
                                 foreach($imgs as $key => $img){
                                     echo "<div class='im' id='ssaa{$key}' style='display:none;text-align:center;margin:3px auto'>";
@@ -98,9 +122,9 @@
                                     echo "</div>";
                                 }
                             ?>
-                        </div>
-                        <div class="btn" onclick="pp(2)" style="cursor: pointer"><img src="./icon/01E02.jpg" alt=""></div>
-                    
+                    </div>
+                    <div class="btn" onclick="pp(2)" style="cursor: pointer"><img src="./icon/01E02.jpg" alt=""></div>
+
                     <script>
                     var nowpage = 0,
                         num = <?=count($imgs)?>;
