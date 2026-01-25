@@ -11,6 +11,12 @@
     <link href="./css/css.css" rel="stylesheet" type="text/css">
     <script src="./js/jquery-1.9.1.min.js"></script>
     <script src="./js/js.js"></script>
+    <style>
+        .btn {
+            text-align: center;
+            margin:5px auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,16 +88,29 @@
                 <?php endif;?>
                 <div style="width:89%; height:480px;" class="dbor">
                     <span class="t botli">校園映象區</span>
+                        <div class="btn" onclick="pp(1)" style="cursor: pointer"><img src="./icon/01E01.jpg" alt=""></div>
+                        <div>
+                            <?php
+                                $imgs=$Image->all(['sh'=>1]);
+                                foreach($imgs as $key => $img){
+                                    echo "<div class='im' id='ssaa{$key}' style='display:none;text-align:center;margin:3px auto'>";
+                                    echo "<img src='./pic/{$img['img']}' style='width:150px;height:103px;border:3px solid orange'>";
+                                    echo "</div>";
+                                }
+                            ?>
+                        </div>
+                        <div class="btn" onclick="pp(2)" style="cursor: pointer"><img src="./icon/01E02.jpg" alt=""></div>
+                    
                     <script>
                     var nowpage = 0,
-                        num = 0;
+                        num = <?=count($imgs)?>;
 
                     function pp(x) {
                         var s, t;
                         if (x == 1 && nowpage - 1 >= 0) {
                             nowpage--;
                         }
-                        if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+                        if (x == 2 && (nowpage + 1) <= num * 1 + 3) {
                             nowpage++;
                         }
                         $(".im").hide()
@@ -99,6 +118,7 @@
                             t = s * 1 + nowpage * 1;
                             $("#ssaa" + t).show()
                         }
+                        console.log(x, nowpage);
                     }
                     pp(1)
                     </script>
